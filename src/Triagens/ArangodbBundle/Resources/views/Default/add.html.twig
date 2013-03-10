@@ -1,0 +1,14 @@
+{% extends "::base.html.twig" %}
+
+{% block title "Add movie" %}
+{% block content %}
+    <h1>Add movie to database</h1>
+    <form action="{{ path('triagens_arangodb_default_add') }}" method="POST" id="add_movie" class="form-inline form-horizontal" {{ form_enctype(form) }}>
+        {{ form_widget(form, {'form_type': 'horizontal'}) }}
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

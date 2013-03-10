@@ -1,0 +1,48 @@
+{% extends "::base.html.twig" %}
+
+{% block title "List movies" %}
+    {% block content %}
+        <h1>List of movies {{ desc }}</h1>
+        <p>
+        Genre: [<a href="{{ url('triagens_arangodb_default_list', {'genre' : "sci-fi"}) }}">Sci-fi</a>]
+        [<a href="{{ url('triagens_arangodb_default_list', {'genre' : "trash"}) }}">Trash</a>]
+        </p>
+        {% if movies|length > 0 %}
+            <table class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Released</th>
+                    <th>Topics</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for movie in movies %}
+                    <tr>
+                        <td>
+                            {{movie.get("title")}}
+                        </td>
+                        <td>
+                            {{movie.get("released")}}
+                        </td>
+
+                        <td>
+                          {% for topic in movie.get("topics") %}
+                            {{topic}}
+                          {% endfor %}
+                        </td>
+                        <td>
+                         [<a href="{{ url('triagens_arangodb_default_edit', {'id' : movie.getId}) }}">edit</a>]
+                         [<a href="{{ url('triagens_arangodb_default_delete', {'id' : movie.getId}) }}">delete</a>]
+
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+           <div class="alert alert-info">No movies found.</div>
+        {% endif %}
+
+    {% endblock %}

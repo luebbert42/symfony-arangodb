@@ -1,0 +1,4 @@
+triagens_arangodb:
+    resource: "@TriagensArangodbBundle/Resources/config/routing.yml"
+    prefix:   /
+

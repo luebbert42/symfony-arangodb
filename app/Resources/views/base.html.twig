@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="{{ asset('css/bootstrap_custom.css') }}" rel="stylesheet">
+        {% block stylesheets %}
+
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+    {% block navigation %}
+        {% include '::nav.html.twig' %}
+    {% endblock %}
+       <div class="container-fluid">
+           <div class="span3">
+               {% block menu %}
+                   <div class="well sidebar-nav">
+                       <ul class="nav nav-list">
+                           <li><a href="{{ path('triagens_arangodb_default_list') }}">List movies</a></li>
+                           <li><a href="{{ path('triagens_arangodb_default_add') }}">Add movie</a></li>
+                           <li><a href="{{ path('triagens_arangodb_default_search') }}">Search for topic</a></li>
+                           <li><a href="{{ path('triagens_arangodb_default_setup') }}">Add dummy data</a></li>
+                       </ul>
+                   </div>
+               {% endblock %}
+           </div>
+           <div class="span9">
+               {% for flashMessage in app.session.flashbag.get('success') %}
+                   <div class="alert alert-success">
+                       {{ flashMessage }}
+                   </div>
+               {% endfor %}
+               {% for flashMessage in app.session.flashbag.get('error') %}
+                   <div class="alert alert-error">
+                       {{ flashMessage }}
+                   </div>
+               {% endfor %}
+               {% block content %}{% endblock %}
+           </div>
+        </div>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,7 @@
+parameters:
+#    triagens_arangodb.example.class: Triagens\ArangodbBundle\Example
+
+services:
+#    triagens_arangodb.example:
+#        class: %triagens_arangodb.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
