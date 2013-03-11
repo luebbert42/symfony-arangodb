@@ -9,15 +9,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 use triagens\ArangoDb\DocumentHandler as DocumentHandler;
-use triagens\ArangoDb\Document as ArangoDocument;
 use triagens\ArangoDb\CollectionHandler as CollectionHandler;
 use triagens\ArangoDb\Statement as Statement;
 
 
-use triagens\ArangodbBundle\Form\AddmovieType;
-use triagens\ArangodbBundle\Form\EditmovieType;
-use triagens\ArangodbBundle\Form\SearchType;
-
+use Triagens\ArangodbBundle\Form\AddmovieType;
+use Triagens\ArangodbBundle\Form\EditmovieType;
+use Triagens\ArangodbBundle\Form\SearchType;
+use Triagens\ArangodbBundle\Entity\Movie;
 
 class DefaultController extends Controller
 {
@@ -48,7 +47,7 @@ class DefaultController extends Controller
         foreach ($movies as $m) {
 
             // create a new document
-            $movie = new ArangoDocument();
+            $movie = new Movie();
 
             // use set method to set document properties
             $movie->set("genre", $m["genre"]);
@@ -73,10 +72,11 @@ class DefaultController extends Controller
      * @Template
      */
     public function searchAction() {
+
         $connection = $this->get('mop_arangodb.default_connection');
-        $documentHandler = new DocumentHandler($connection);
-        $collectionHandler = new CollectionHandler($connection);
+
         $form = $this->createForm(new SearchType());
+
         $request = $this->get('request');
         if ($request->isMethod('POST')) {
             $form->bind($request);
@@ -89,7 +89,9 @@ class DefaultController extends Controller
                 ));
                  ;
                 $statement->setQuery("FOR m in `".$this->_getCollectionName()."` FILTER \"".$form->get("search")->getData()."\" in m.topics RETURN m");
+
                 $cursor = $statement->execute();
+
                 return $this->render(
                     'TriagensArangodbBundle:Default:list.html.twig',
                     array(
@@ -123,7 +125,7 @@ class DefaultController extends Controller
         }
 
         // create example document which is used for the search by example afterwards
-        $movie = new ArangoDocument();
+        $movie = new Movie();
         $movie->set("genre", $genre);
 
         $cursor = $collectionHandler->byExample($this->_getCollectionName(), $movie);
@@ -171,12 +173,14 @@ class DefaultController extends Controller
             $form->bind($request);
             if ($form->isValid()) {
 
-                // create ArangodbDocument an prefill with data
-                $movie = new ArangoDocument();
-                $movie->set("title",$form->get("title")->getData());
-                $movie->set("released",$form->get("released")->getData());
-                $movie->set("genre",$form->get("genre")->getData());
-                $movie->set("topics",$form->get("topics")->getData()); // implode/explode is handeled in data transformer class
+                // create Movie (extension of ArangodbDocument)
+                $movie = new Movie();
+
+                // populate with data fetched from form
+                // note that transforming the topics list which is represented as string in the form
+                // into an array is done
+                // in Form/DataTransformer/TopicsToTopiclist/Transformer by Symfony
+                $movie->populate($form->getData());
 
                 // update in ArangoDB
                 $documentHandler->updateById($this->_getCollectionName(),(int)$form->get('id')->getData(),$movie);
@@ -205,12 +209,16 @@ class DefaultController extends Controller
         if ($request->isMethod('POST')) {
             $form->bind($request);
             if ($form->isValid()) {
-                $movie = new ArangoDocument();
-                $movie->set("title",$form->get("title")->getData());
-                $movie->set("released",$form->get("released")->getData());
-                $movie->set("genre",$form->get("genre")->getData());
-                $movie->set("topics",$form->get("topics")->getData());
-                $documentHandler->add($this->_getCollectionName(),$movie);
+                // create Movie (extension of ArangodbDocument)
+                $movie = new Movie();
+
+                // populate with data fetched from form
+                // note that transforming the topics list which is represented as string in the form
+                // into an array is done
+                // in Form/DataTransformer/TopicsToTopiclist/Transformer by Symfony
+                $movie->populate($form->getData());
+
+                $documentHandler->save($this->_getCollectionName(),$movie);
                 $this->get('session')->getFlashBag()->add('success', "New movie was successfully added.");
                 return new RedirectResponse($this->generateUrl('triagens_arangodb_default_list'));
             }
