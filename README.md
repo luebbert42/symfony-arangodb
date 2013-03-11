@@ -11,6 +11,10 @@ This demo uses
 * [MopArangoDbBundle](https://github.com/m0ppers/MopArangoDbBundle)
 * [arangodb-php](https://github.com/triagens/arangodb-php)
 
+_Note_:
+For the time beeing a fork of MopArangodbBundle is used (see composer.json), as it uses the GetAllCollections()
+ method from Arangodb-PHP, which is only available in the devel branch.
+
 ## Scope
 The "app" demonstrates how to create, update and delete documents using the simple query API.
 Additionally it has an example for ArangoDB's query language AQL (search for topics in the movies database).

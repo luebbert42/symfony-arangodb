@@ -1,5 +1,5 @@
 {
-    "hash": "c7c405358c6a332e85171dd401153881",
+    "hash": "b03b28f7c5114565a547e3fa4242dfd6",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
@@ -573,18 +573,18 @@
             "target-dir": "Mop/ArangoDbBundle",
             "source": {
                 "type": "git",
-                "url": "https://github.com/m0ppers/MopArangoDbBundle.git",
-                "reference": "4d5d13c447221db5a0b9b3888fae82daf9bf37f3"
+                "url": "https://github.com/luebbert42/MopArangoDbBundle.git",
+                "reference": "ca62379dde64cf54203294cc67f933c09b20397e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/m0ppers/MopArangoDbBundle/zipball/4d5d13c447221db5a0b9b3888fae82daf9bf37f3",
-                "reference": "4d5d13c447221db5a0b9b3888fae82daf9bf37f3",
+                "url": "https://api.github.com/repos/luebbert42/MopArangoDbBundle/zipball/ca62379dde64cf54203294cc67f933c09b20397e",
+                "reference": "ca62379dde64cf54203294cc67f933c09b20397e",
                 "shasum": ""
             },
             "require": {
                 "symfony/framework-bundle": ">=2.1.0,<2.3-dev",
-                "triagens/arangodb": "1.2.*"
+                "triagens/arangodb": "dev-devel"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -603,10 +603,9 @@
             ],
             "description": "Symfony2 integration for ArangoDB",
             "support": {
-                "source": "https://github.com/m0ppers/MopArangoDbBundle/tree/master",
-                "issues": "https://github.com/m0ppers/MopArangoDbBundle/issues"
+                "source": "https://github.com/luebbert42/MopArangoDbBundle/tree/master"
             },
-            "time": "2013-03-09 22:56:27"
+            "time": "2013-03-11 07:57:58"
         },
         {
             "name": "phpoption/phpoption",
@@ -1162,16 +1161,16 @@
         },
         {
             "name": "triagens/ArangoDb",
-            "version": "v1.2.0",
+            "version": "dev-devel",
             "source": {
                 "type": "git",
                 "url": "https://github.com/triAGENS/ArangoDB-PHP.git",
-                "reference": "v1.2.0"
+                "reference": "a1af467441b05bb536445c767fc0c0b381787b49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/triAGENS/ArangoDB-PHP/zipball/v1.2.0",
-                "reference": "v1.2.0",
+                "url": "https://api.github.com/repos/triAGENS/ArangoDB-PHP/zipball/a1af467441b05bb536445c767fc0c0b381787b49",
+                "reference": "a1af467441b05bb536445c767fc0c0b381787b49",
                 "shasum": ""
             },
             "require": {
@@ -1183,7 +1182,7 @@
                     "triagens\\ArangoDb": "lib/"
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache2"
             ],
@@ -1212,11 +1211,11 @@
                 "document store",
                 "nosql"
             ],
-            "time": "2013-03-03 00:48:00"
+            "time": "2013-03-10 12:52:42"
         },
         {
             "name": "twig/extensions",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig-extensions.git",
@@ -1242,7 +1241,7 @@
                     "Twig_Extensions_": "lib/"
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1311,13 +1310,22 @@
             "time": "2013-02-09 18:21:53"
         }
     ],
-    "packages-dev": null,
+    "packages-dev": [
+
+    ],
     "aliases": [
 
     ],
     "minimum-stability": "alpha",
     "stability-flags": {
+        "triagens/arangodb": 20,
         "braincrafted/bootstrap-bundle": 20,
         "mop/arangodbbundle": 20
-    }
+    },
+    "platform": {
+        "php": ">=5.3.3"
+    },
+    "platform-dev": [
+
+    ]
 }
