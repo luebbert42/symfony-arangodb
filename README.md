@@ -2,6 +2,8 @@
 
 This is a simple "Hello World" example of using ArangoDB in Symfony2.
 
+![Screenshot](http://www.arangodb.org/wp-content/uploads/2013/03/movies_demo.jpg)
+
 This demo uses
 
 * Symfony 2.2
