@@ -87,9 +87,10 @@ class DefaultController extends Controller
                     "batchSize" => 1000,
                     "_sanitize" => false,
                 ));
-                 ;
-                $statement->setQuery("FOR m in `".$this->_getCollectionName()."` FILTER \"".$form->get("search")->getData()."\" in m.topics RETURN m");
 
+
+                $statement->setQuery("FOR m in `".$this->_getCollectionName()."` FILTER @term in m.topics RETURN m");
+                $statement->bind("term",  $form->get("search")->getData());
                 $cursor = $statement->execute();
 
                 return $this->render(
