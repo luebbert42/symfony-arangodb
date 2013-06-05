@@ -21,7 +21,6 @@ class AppKernel extends Kernel
             new Mop\ArangoDbBundle\MopArangoDbBundle(),
             new Bc\Bundle\BootstrapBundle\BcBootstrapBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new Triagens\ArgonautBundle\TriagensArgonautBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
