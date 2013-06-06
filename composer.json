@@ -7,7 +7,7 @@
     "repositories": [
          {
                 "type":"vcs",
-                "url":"/Users/luebbert/MopArangoDbBundle/"
+                "url":"https://github.com/luebbert42/MopArangoDbBundle"
          }
     ],
     "require": {
@@ -24,7 +24,8 @@
         "triagens/ArangoDb": "dev-devel",
         "braincrafted/bootstrap-bundle": "dev-master",
         "friendsofsymfony/user-bundle": "2.0.*@dev",
-        "mop/arangodbbundle" : "*@dev"
+        "mop/arangodbbundle" : "*@dev",
+        "F21/Paradox": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
