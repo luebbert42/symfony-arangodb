@@ -6,14 +6,11 @@ This is a simple "Hello World" example of using ArangoDB in Symfony2.
 
 This demo uses
 
-* Symfony 2.2
-* [ArangoDB 1.2](https://www.arangodb.org/download)
+* Symfony 2.4
+* [ArangoDB 2](https://www.arangodb.org/download)
 * [MopArangoDbBundle](https://github.com/m0ppers/MopArangoDbBundle)
 * [arangodb-php](https://github.com/triagens/arangodb-php)
 
-_Note_:
-For the time beeing a fork of MopArangodbBundle is used (see composer.json), as it uses the GetAllCollections()
- method from Arangodb-PHP, which is only available in the devel branch.
 
 ## Scope
 The "app" demonstrates how to create, update and delete documents using the simple query API.
