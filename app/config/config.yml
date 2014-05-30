@@ -20,6 +20,13 @@ framework:
     session:         ~
     fragments:       ~
 
+braincrafted_bootstrap:
+    auto_configure:
+        assetic: false
+        twig: true
+        knp_menu: false
+        knp_paginator: false
+
 # Twig Configuration
 twig:
     debug:            %kernel.debug%

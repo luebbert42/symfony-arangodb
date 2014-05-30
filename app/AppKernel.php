@@ -19,7 +19,7 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Triagens\ArangodbBundle\TriagensArangodbBundle(),
             new Mop\ArangoDbBundle\MopArangoDbBundle(),
-            new Bc\Bundle\BootstrapBundle\BcBootstrapBundle(),
+            new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
             new FOS\UserBundle\FOSUserBundle(),
         );
 

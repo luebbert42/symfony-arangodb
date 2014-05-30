@@ -4,7 +4,9 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
 
-        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+        <link href="{{ asset('css/form.css') }}" rel="stylesheet">
         <link href="{{ asset('css/bootstrap_custom.css') }}" rel="stylesheet">
         {% block stylesheets %}
 
@@ -15,8 +17,9 @@
     {% block navigation %}
         {% include '::nav.html.twig' %}
     {% endblock %}
-       <div class="container-fluid">
-           <div class="span3">
+       <div class="container">
+           <div class="row">
+              <div class="col-lg-3">
                {% block menu %}
                    <div class="well sidebar-nav">
                        <ul class="nav nav-list">
@@ -27,8 +30,8 @@
                        </ul>
                    </div>
                {% endblock %}
-           </div>
-           <div class="span9">
+            </div>
+            <div class="col-lg-9">
                {% for flashMessage in app.session.flashbag.get('success') %}
                    <div class="alert alert-success">
                        {{ flashMessage }}
@@ -40,9 +43,10 @@
                    </div>
                {% endfor %}
                {% block content %}{% endblock %}
-           </div>
+             </div>
+          </div>
         </div>
-        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

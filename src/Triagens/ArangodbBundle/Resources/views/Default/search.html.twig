@@ -3,12 +3,12 @@
 {% block title "Search for movie" %}
 {% block content %}
     <h1>Search for movies by topic</h1>
-    <form action="{{ path('triagens_arangodb_default_search') }}" method="POST" id="search_movie" class="form-inline form-horizontal" {{ form_enctype(form) }}>
+    <form action="{{ path('triagens_arangodb_default_search') }}" method="POST" id="search_movie" class="form-horizontal" {{ form_enctype(form) }}>
+        {{ bootstrap_set_style('horizontal') }}
         {{ form_widget(form, {'form_type': 'horizontal'}) }}
-        <div class="control-group">
-            <div class="controls">
-                <button type="submit" class="btn btn-primary">Search</button>
-            </div>
-        </div>
+
+        <button type="submit" class="btn btn-primary">Search</button>
+
+
     </form>
 {% endblock %}

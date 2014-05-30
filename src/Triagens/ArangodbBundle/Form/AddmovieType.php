@@ -43,7 +43,7 @@ class AddmovieType extends AbstractType
                 "required" => true,
                 "attr" => array('class' => 'input-xlarge')
                 ))
-                ->prependNormTransformer($transformer)
+                ->addModelTransformer($transformer)
         );
     }
 

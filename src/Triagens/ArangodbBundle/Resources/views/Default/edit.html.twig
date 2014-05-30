@@ -3,12 +3,10 @@
 {% block title "Edit movie" %}
 {% block content %}
     <h1>Edit movie</h1>
-    <form action="{{ path('triagens_arangodb_default_edit', {'id' : id}) }}" method="POST" id="add_movie" class="form-inline form-horizontal" {{ form_enctype(form) }}>
+    <form action="{{ path('triagens_arangodb_default_edit', {'id' : id}) }}" method="POST" id="add_movie" class="form-horizontal" {{ form_enctype(form) }}>
+        {{ bootstrap_set_style('horizontal') }}
         {{ form_widget(form, {'form_type': 'horizontal'}) }}
-        <div class="control-group">
-            <div class="controls">
+
                 <button type="submit" class="btn btn-primary">Save</button>
-            </div>
-        </div>
-    </form>
+        </form>
 {% endblock %}
